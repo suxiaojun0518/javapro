@@ -1,6 +1,5 @@
 package com.neuedu.text;
 
-
 public class MyBook {
     private String name;
     private double price;
