@@ -33,8 +33,10 @@ public class CopyFile {
         }
         finally {
             try {
-                inputStream.close();
-                outputStream.close();
+                    if(outputStream!=null)
+                        outputStream.close();
+                    if(inputStream!=null)
+                        inputStream.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }

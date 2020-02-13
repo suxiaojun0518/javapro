@@ -1,13 +1,20 @@
 package com.neuedu.text;//src下不允许直接建类 必须有包！！！！！！！
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class MybookText {
     public static List <MyBook> list =new ArrayList();
+    public static File file =new File("E:/student");
     public static void main(String[] args) {
-
-        inputData(list);
+        if(!file.exists()){
+            inputData(list);
+            save();
+        }
+       else {
+           read();
+       }
         while (true){
             menu();
             Scanner scanner =new Scanner(System.in);
@@ -35,11 +42,15 @@ public class MybookText {
 
 
             }
+
         }
+
+
     }
 
     public static void inputData(List<MyBook> books) {
         Scanner scanner =new Scanner(System.in);
+        System.out.println("首次执行，请输入需要初始化的图书本数：");
         int n= scanner.nextInt();
         for (int i = 0; i <= n; i++) {
             MyBook myBook = new MyBook("书名" + i, i, "出版社" + i, "sxj" + i, "sxj0518" + i);
@@ -68,6 +79,7 @@ public class MybookText {
             if(myBook.getName().equals(name)){
                books.remove(i);
                 System.out.println("此书删除成功。");
+                save();
                 System.out.println(myBook);
                 return;
             }
@@ -89,6 +101,7 @@ public class MybookText {
         String bookISBN =scanner.next();
         MyBook myBook = new MyBook(name,price,press,author,bookISBN);
         books.add(myBook);
+        save();
         System.out.println("添加成功！");
         System.out.println(myBook);
     }
@@ -99,5 +112,54 @@ public class MybookText {
         System.out.println("3：查找图书");
         System.out.println("4：查看所有图书");
         System.out.println("5：退出");
+        System.out.print("请输入：");
     }
+    public static void save(){
+        OutputStream os =null;
+        ObjectOutputStream oos=null;
+        try {
+            os =new FileOutputStream(file);
+            oos=new ObjectOutputStream(os);
+            oos.writeObject(list);
+            oos.flush();
+            os.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        finally {
+                try {
+                    if(oos!=null)
+                        oos.close();
+                    if(os!=null)
+                        os.close();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+        }
+    }
+    public static void read(){
+        InputStream is=null;
+        ObjectInputStream ois=null;
+        try {
+            is=new FileInputStream(file);
+            ois=new ObjectInputStream(is);
+            list =(List <MyBook>) ois.readObject();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        finally {
+                try {
+                    if(ois!=null)
+                        ois.close();
+                    if(is!=null)
+                        is.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+        }
+    }
+
 }
