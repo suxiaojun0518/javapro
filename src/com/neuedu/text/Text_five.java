@@ -4,8 +4,8 @@ public class Text_five {
     public static void main(String[] args) {
     int a=3;
     int b=1;
-    int c=Text_five.max_approximate(a,b);
-        int d=Text_five.min_multiple(a,b);
+    int c= Text_five.max_approximate(a,b);
+        int d= Text_five.min_multiple(a,b);
         System.out.println("最大公约数为："+c);
         System.out.println("最小公倍数为："+d);
     }

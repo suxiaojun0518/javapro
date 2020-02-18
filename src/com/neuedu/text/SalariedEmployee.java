@@ -1,6 +1,6 @@
 package com.neuedu.text;
 
-public class SalariedEmployee extends ColaEmployee{
+public class SalariedEmployee extends ColaEmployee {
     public static int salar;
     public SalariedEmployee(int salar){
         this.salar=salar;

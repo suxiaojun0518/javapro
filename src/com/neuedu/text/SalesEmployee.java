@@ -1,6 +1,6 @@
 package com.neuedu.text;
 
-public class SalesEmployee extends ColaEmployee{
+public class SalesEmployee extends ColaEmployee {
     public int month_sellnumber;
     public double royalty_rate;
     public SalesEmployee(int month_sellnumber,double royalty_rate){

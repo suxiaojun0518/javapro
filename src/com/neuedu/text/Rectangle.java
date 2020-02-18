@@ -1,6 +1,6 @@
 package com.neuedu.text;
 
-public class Rectangle extends Shape{
+public class Rectangle extends Shape {
     public int wid;
     public int height;
 

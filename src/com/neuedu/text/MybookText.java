@@ -1,4 +1,5 @@
 package com.neuedu.text;//src下不允许直接建类 必须有包！！！！！！！
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -62,7 +63,7 @@ public class MybookText {
             System.out.println(books.get(i));
         }
     }
-    public static void searchName(List<MyBook> books,String name){
+    public static void searchName(List<MyBook> books, String name){
         for (int i=0;i<books.size();i++){
             MyBook myBook=books.get(i);
             if(myBook.getName().equals(name)){
@@ -73,7 +74,7 @@ public class MybookText {
         }
         System.out.println("此书不存在！");
     }
-    public static void deleteName(List<MyBook> books,String name){
+    public static void deleteName(List<MyBook> books, String name){
         for (int i=0;i<books.size();i++){
             MyBook myBook=books.get(i);
             if(myBook.getName().equals(name)){

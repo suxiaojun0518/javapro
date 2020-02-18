@@ -1,6 +1,6 @@
 package com.neuedu.text;
 
-public class Dog extends Animal{
+public class Dog extends Animal {
     private int no;
     private String sex;
     public void setAge(int age){
